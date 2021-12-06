@@ -1,5 +1,8 @@
 cmake_minimum_required(VERSION 2.8.3)
 project(eskf)
+add_compile_options(-std=c++14)
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall")
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=c99 -DEXT_DEP -fdiagnostics-show-option")
 find_package(catkin REQUIRED COMPONENTS
   roscpp
   geometry_msgs
@@ -38,7 +41,7 @@ set(RELEVANT_LIBRARIES
 )
 
 # rigorous error checking
-add_definitions("-Wall -Werror -O3 -std=c++11")
+# add_definitions("-Wall -Werror -O3 -std=c++14")
 
 # build main filter
 add_executable(${PROJECT_NAME}
